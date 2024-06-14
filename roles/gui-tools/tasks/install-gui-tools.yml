@@ -1,0 +1,55 @@
+---
+- name: Update apt repo/cache
+  ansible.builtin.apt:
+    update_cache: yes
+    force_apt_get: yes
+    cache_valid_time: 3600
+  become: true
+
+- name: Upgrade all packages
+  ansible.builtin.apt:
+    upgrade: yes
+    force_apt_get: yes
+  become: true
+
+- name: Set Wireshark to install non-interactively
+  ansible.builtin.debconf:
+    name: wireshark-common
+    question: 'wireshark-common/install-setuid'
+    vtype: boolean
+    value: true
+  become: true
+
+- name: Install GUI Packages
+  ansible.builtin.package:
+    update_cache: yes
+    name: '{{ item }}'
+    state: latest
+  environment:
+    DEBIAN_FRONTEND: noninteractive
+  loop: '{{ gui_tools_to_install }}'
+  become: true
+
+# - name: Clone dragon repository
+#   ansible.builtin.git:
+#     repo: 'https://github.com/mwh/dragon.git'
+#     dest: "/opt/dragon"
+#   become: true
+
+# - name: Change ownership of /opt/dragon
+#   ansible.builtin.file:
+#     path: "/opt/dragon"
+#     owner: "{{ ansible_user_id }}"
+#     group: "{{ ansible_user_id }}"
+#     recurse: yes
+#   become: true
+
+# - name: Compile dragon
+#   ansible.builtin.command:
+#     cmd: make
+#     chdir: "/opt/dragon"
+
+# - name: Install dragon
+#   ansible.builtin.command:
+#     cmd: make install
+#     chdir: "/opt/dragon"

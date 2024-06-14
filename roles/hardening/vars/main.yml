@@ -1,0 +1,26 @@
+---
+# defaults file for hardening
+services_to_disable:
+  - tor
+  - nxserver
+  - bluetooth
+  - cups
+  - rpcbind
+  - samba 
+  - cups-browsed 
+  - cups cups-bsd
+  - cups-common
+  - cups-client
+  - cups-daemon
+  - bluez-cups
+  - cups-core-drivers
+  - cups-ppdc
+  - hplip
+  - printer-driver-gutenprint
+  - printer-driver-hpcups
+  - printer-driver-postscript-hp
+  - printer-driver-splix
+  # - ssh
+
+secure_services_to_install:
+  - apparmor

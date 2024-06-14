@@ -1,0 +1,14 @@
+- name: "Copying Vim Config"
+  file:
+    src: "{{ role_path }}/files/.vimrc"
+    dest: "~/.vimrc"
+    force: yes
+    state: link
+
+- name: Clone Vundle repository
+  git:
+    repo: https://github.com/VundleVim/Vundle.vim.git
+    dest: ~/.vim/bundle/Vundle.vim
+
+- name: Install Vim plugins with Vundle
+  command: vim +PluginInstall +qall

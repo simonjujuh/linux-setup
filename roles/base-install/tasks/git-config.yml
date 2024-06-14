@@ -1,0 +1,6 @@
+- name: "Copying Git Config"
+  file:
+    src: "{{ role_path }}/files/.gitconfig"
+    dest: "~/.gitconfig"
+    force: yes
+    state: link

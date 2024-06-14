@@ -1,0 +1,11 @@
+---
+- name: "Ubuntu build"
+  hosts: localhost
+  connection: local
+  roles:
+    - role: 'roles/base-install'
+      tags: 'base-install'
+    - role: 'roles/gui-tools'
+      tags: 'gui-tools'
+    # - role: 'roles/hardening'
+    # - role: 'security/tools'

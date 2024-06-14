@@ -1,0 +1,14 @@
+- name: "Copying Tmux Config"
+  file:
+    src: "{{ role_path }}/files/.tmux.conf"
+    dest: "~/.tmux.conf"
+    force: yes
+    state: link
+
+- name: Clone Tmux Plugin Manager repo
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: ~/.tmux/plugins/tpm
+
+- name: Install TPM plugins
+  command: /bin/bash ~/.tmux/plugins/tpm/bin/install_plugins
