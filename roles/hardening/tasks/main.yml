@@ -1,7 +1,7 @@
 ---
 - include_tasks: system-config.yml # Configure basic system configuration
 - include_tasks: ufw-setup.yml # Setting up UFW firewall
-# - include_tasks: disable-service.yml # Disabling unnecessary services
+- include_tasks: disable-service.yml # Disabling unnecessary services
 # - include_tasks: auditd-setup.yml
 # - include_tasks: install-secu-packages.yml # Installing security packages
 # - include_tasks: cleanup.yml # Cleaning up the system after installations
