@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="bira"
+ZSH_THEME="gentoo"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -116,6 +116,7 @@ alias ll='ls -lF'
 alias la='ls -A'
 alias l='ls -CF'
 alias clear='clear -x'
+alias exegol='sudo -E ~/.local/bin/exegol'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export HISTSIZE=10000
