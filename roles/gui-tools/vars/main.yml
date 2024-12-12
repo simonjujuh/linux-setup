@@ -6,24 +6,24 @@ gui_tools_to_install:
   - bless
   - blueman
   - cheese
-  # - filezilla
   - flameshot
   - gnome-tweaks
   - gparted
-  # - kompare
-  # - libgtk-3-dev
-  # - libreoffice
-  # - mplayer
   - pavucontrol
+  - vlc
+  - wireshark
+  # - dunst
+  - okular
+  - chromium
   # - qbittorrent
   # - qemu
   # - torbrowser-launcher
   # - usb-creator-gtk
-  - vlc
-  - wireshark
-  - dunst
-  - okular
-  - chromium-browser
+  # - kompare
+  # - libgtk-3-dev
+  # - libreoffice
+  # - mplayer
+  # - filezilla
 
 chrome_gpg_dest: '/etc/apt/trusted.gpg.d/chrome.gpg'
 chrome_deb_url: 'deb [arch=amd64 signed-by={{ chrome_gpg_dest }}] https://dl.google.com/linux/chrome/deb/ stable main'
@@ -32,15 +32,15 @@ chrome_key_server: 'keyserver.ubuntu.com'
 chrome_pub_key_url: 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
 chrome_export_key_id: 'D38B4796'
 
-# veracrypt_download_url: 'https://api.github.com/repos/veracrypt/veracrypt/releases/latest'
+veracrypt_download_url: 'https://api.github.com/repos/veracrypt/veracrypt/releases/latest'
 
-# discord_download_url: 'https://discord.com/api/download?platform=linux&format=deb'
+discord_download_url: 'https://discord.com/api/download?platform=linux&format=deb'
 
 vscode_deb_url: 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64'
 
-# signal_key_url: 'https://updates.signal.org/desktop/apt/keys.asc'
-# signal_gpg_dest: '/usr/share/keyrings/signal-desktop-keyring.gpg'
-# signal_repo_url: 'deb [arch=amd64 signed-by={{ signal_gpg_dest }}] https://updates.signal.org/desktop/apt xenial main'
+signal_key_url: 'https://updates.signal.org/desktop/apt/keys.asc'
+signal_gpg_dest: '/usr/share/keyrings/signal-desktop-keyring.gpg'
+signal_repo_url: 'deb [arch=amd64 signed-by={{ signal_gpg_dest }}] https://updates.signal.org/desktop/apt xenial main'
 
 # cameractrls_dependencies:
 #   - libsdl2-2.0-0
@@ -53,25 +53,25 @@ regolith_gpg_dest: '/usr/share/keyrings/regolith-archive-keyring.gpg'
 regolith_repo_url: 'deb [arch=amd64 signed-by={{ regolith_gpg_dest }}] https://regolith-desktop.org/release-3_0-ubuntu-jammy-amd64 jammy main'
 regolith_packages:
   - regolith-desktop
-  - regolith-look-nord
+  # - regolith-look-nord
   - regolith-session-flashback
-  - regolith-system-ubuntu
+  # - regolith-system-ubuntu
 i3_packages:
   - i3xrocks-battery
   # - i3xrocks-bluetooth
-  # - i3xrocks-cpu-usage
+  - i3xrocks-cpu-usage
   # - i3xrocks-disk-capacity
   # - i3xrocks-focused-window-name
   # - i3xrocks-info
   # - i3xrocks-memory
   # - i3xrocks-microphone
   # - i3xrocks-net-traffic
-  # - i3xrocks-rofication
+  - i3xrocks-rofication
   # - i3xrocks-temp
   - i3xrocks-time
   # - i3xrocks-updates
   - i3xrocks-volume
-  # - i3xrocks-wifi
+  - i3xrocks-wifi
   # - i3xrocks-app-launcher
   # - i3xrocks-key-indicator
   # - i3xrocks-keyboard-layout
@@ -91,5 +91,5 @@ i3_config_block: |
 
 i3_xresources_block: |
     gtk.font_name: Nerd Font Mono 10
-#    regolith.wallpaper.file: /opt/lalubuntu/screens/wallpaper.png
-#    regolith.wallpaper.options: stretched
+  # regolith.wallpaper.file: /opt/lalubuntu/screens/wallpaper.png
+  # regolith.wallpaper.options: stretched
