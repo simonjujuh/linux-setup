@@ -25,3 +25,7 @@ ansible-playbook -vv -i inventory.ini --ask-become main.yml --tags gui-tools
 ```
 
 
+## To-do
+
+- [ ] Add virtualbox in gui tools
+- [ ] Add vagrant in gui tools

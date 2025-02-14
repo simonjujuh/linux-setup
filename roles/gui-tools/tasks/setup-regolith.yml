@@ -23,14 +23,15 @@
   become: true
   when: not regolith_installed.stat.exists
 
-- name: Set lightdm as the default X display manager
-  ansible.builtin.debconf:
-    name: lightdm
-    question: 'shared/default-x-display-manager'
-    value: 'lightdm'
-    vtype: 'select'
-  become: true
-  when: not regolith_installed.stat.exists
+# Keep GDM
+# - name: Set lightdm as the default X display manager
+#   ansible.builtin.debconf:
+#     name: lightdm
+#     question: 'shared/default-x-display-manager'
+#     value: 'lightdm'
+#     vtype: 'select'
+#   become: true
+#   when: not regolith_installed.stat.exists
 
 - name: Update APT package cache and install Regolith Desktop
   ansible.builtin.package:
@@ -87,8 +88,8 @@
     marker: "! {mark} ANSIBLE MANAGED BLOCK"
     create: yes
 
-# - name: Set GNOME interface to prefer dark color scheme
-#   ansible.builtin.shell: "gsettings set org.gnome.desktop.interface color-scheme prefer-dark"
+- name: Set GNOME interface to prefer dark color scheme
+  ansible.builtin.shell: "gsettings set org.gnome.desktop.interface color-scheme prefer-dark"
 
-# - name: Set click on touchpad enable
-#   ansible.builtin.shell: "gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true"
+- name: Set click on touchpad enable
+  ansible.builtin.shell: "gsettings set org.gnome.desktop.peripherals.touchpad tap-to-click true"
