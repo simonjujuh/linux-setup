@@ -47,3 +47,9 @@
 - name: Run fzf installation script
   ansible.builtin.shell: "zsh -c '~/.fzf/install --all'"
 
+- name: "Copying aliases"
+  file:
+    src: "{{ role_path }}/files/.aliases"
+    dest: "~/.aliases"
+    force: yes
+    state: link

@@ -22,3 +22,5 @@
 	ff = only
 [init]
 	defaultBranch = master
+[safe]
+	directory = /home/sjuhel/.exegol/exegol-resources

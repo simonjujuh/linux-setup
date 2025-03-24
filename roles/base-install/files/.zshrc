@@ -119,4 +119,5 @@ alias clear='clear -x'
 alias exegol='sudo -E ~/.local/bin/exegol'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export HISTSIZE=10000
+[ -f ~/.aliases ] && source ~/.aliases
+export HISTSIZE=1000
