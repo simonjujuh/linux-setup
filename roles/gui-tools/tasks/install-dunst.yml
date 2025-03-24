@@ -1,0 +1,30 @@
+---
+- name: Install Dunst and Arc icon theme
+  package:
+    name:
+      - dunst
+      - arc-icon-theme
+    state: present
+
+- name: Create Dunst configuration directory
+  file:
+    path: "{{ ansible_env.HOME }}/.config/dunst"
+    state: directory
+    mode: '0755'
+
+- name: Copy Dunst configuration file (dunstrc)
+  copy:
+    src: files/dunstrc
+    dest: "{{ ansible_env.HOME }}/.config/dunst/dunstrc"
+    mode: '0644'
+
+- name: Copy Dunst icons folder
+  copy:
+    src: files/icons/
+    dest: "{{ ansible_env.HOME }}/.config/dunst/icons/"
+    mode: '0755'
+
+- name: Restart Dunst
+  command: pkill dunst
+  ignore_errors: true
+  changed_when: false
