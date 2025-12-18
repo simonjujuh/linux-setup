@@ -57,36 +57,56 @@
     path: '{{ ansible_env.HOME }}/.config/regolith3/i3/config.d/'
     state: directory
 
-- name: Append lines to the i3 config file
-  ansible.builtin.blockinfile:
-    path: '{{ ansible_env.HOME }}/.config/regolith3/i3/config.d/config'
-    block: '{{ i3_config_block }}'
-    create: yes
+- name: "Copy (link) i3 config file"
+  file:
+    src: "{{ role_path }}/files/i3_custom_config"
+    dest: "{{ ansible_env.HOME }}/.config/regolith3/i3/config.d/config"
+    force: yes
+    state: link
 
-- name: Get rid of duplicated blocks
-  ansible.builtin.lineinfile:
-    path: '{{ ansible_env.HOME }}/.config/regolith3/Xresources'
-    state: absent
-    line: '{{ item }}'
-    backrefs: yes
-  loop:
-    - "# BEGIN ANSIBLE MANAGED BLOCK"
-    - "gtk.font_name: Nerd Font Mono 10"
-    - "regolith.wallpaper.file: /opt/lalubuntu/screens/wallpaper.png"
-    - "regolith.wallpaper.options: stretched"
-    - "# END ANSIBLE MANAGED BLOCK"
-    - "! Ansible managed block"
-    - "gtk.font_name: Nerd Font Mono 10"
-    - "regolith.wallpaper.file: /opt/lalubuntu/screens/wallpaper.png"
-    - "regolith.wallpaper.options: stretched"
-    - "! Ansible managed block"
+- name: "Copy (link) Xresources config file"
+  file:
+    src: "{{ role_path }}/files/Xresources"
+    dest: "{{ ansible_env.HOME }}/.config/regolith3/Xresources"
+    force: yes
+    state: link
 
-- name: Append lines to the i3 Xresources file
-  ansible.builtin.blockinfile:
-    path: '{{ ansible_env.HOME }}/.config/regolith3/Xresources'
-    block: '{{ i3_xresources_block }}'
-    marker: "! {mark} ANSIBLE MANAGED BLOCK"
-    create: yes
+- name: "Copy (link) toggle-notifications.sh script"
+  file:
+    src: "{{ role_path }}/files/toggle-notifications.sh"
+    dest: "{{ ansible_env.HOME }}/.config/regolith3/Xresources"
+    force: yes
+    state: link
+
+- name: "Copy wallpaper and lockscreen image"
+  copy:
+    src: "{{ role_path }}/files/wallpaper.jpg"
+    dest: "{{ ansible_env.HOME }}/.config/regolith3/wallpaper.jpg"
+
+# - name: Get rid of duplicated blocks
+#   ansible.builtin.lineinfile:
+#     path: '{{ ansible_env.HOME }}/.config/regolith3/Xresources'
+#     state: absent
+#     line: '{{ item }}'
+#     backrefs: yes
+#   loop:
+#     - "# BEGIN ANSIBLE MANAGED BLOCK"
+#     - "gtk.font_name: Nerd Font Mono 10"
+#     - "regolith.wallpaper.file: /opt/lalubuntu/screens/wallpaper.png"
+#     - "regolith.wallpaper.options: stretched"
+#     - "# END ANSIBLE MANAGED BLOCK"
+#     - "! Ansible managed block"
+#     - "gtk.font_name: Nerd Font Mono 10"
+#     - "regolith.wallpaper.file: /opt/lalubuntu/screens/wallpaper.png"
+#     - "regolith.wallpaper.options: stretched"
+#     - "! Ansible managed block"
+
+# - name: Append lines to the i3 Xresources file
+#   ansible.builtin.blockinfile:
+#     path: '{{ ansible_env.HOME }}/.config/regolith3/Xresources'
+#     block: '{{ i3_xresources_block }}'
+#     marker: "! {mark} ANSIBLE MANAGED BLOCK"
+#     create: yes
 
 - name: Set GNOME interface to prefer dark color scheme
   ansible.builtin.shell: "gsettings set org.gnome.desktop.interface color-scheme prefer-dark"
