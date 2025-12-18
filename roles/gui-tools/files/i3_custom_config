@@ -1,0 +1,25 @@
+# BEGIN ANSIBLE MANAGED BLOCK
+bindsym $mod+p exec flameshot gui
+bindsym $mod+Ctrl+p exec flameshot full -p /tmp/
+# bindsym $mod+s exec gnome-control-center sound
+bindsym $mod+s exec ~/.config/regolith3/i3/toggle-notifications.sh
+
+for_window [class="gnome-calculator"] floating enable
+for_window [class="file-roller"] floating enable
+for_window [class="Gpick"] floating enable
+
+# Create Log out, Reboot, Poweroff bindings
+# mode "Display (S)ingle, (D)ual" {
+#         bindsym Shift+s exec ~/.screenlayout/home-single.sh
+#         bindsym Shift+d exec ~/.screenlayout/home-dual.sh
+
+#         # back to normal: Enter or Escape
+#         bindsym Return mode "default"
+#         bindsym Escape mode "default"
+# }
+# bindsym $mod+Shift+d mode "Display (S)ingle, (D)ual"
+
+exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id /usr/bin/pasystray
+
+set_from_resource $wm.program.files wm.program.files /usr/bin/nemo
