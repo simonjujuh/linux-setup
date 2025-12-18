@@ -1,3 +1,36 @@
+# Quick shortcuts
+alias dl='cd ~/Downloads'
+alias da='cd ~/data'
+alias sa='cd ~/shared'
+alias tn='tmux new'
+alias ta='tmux attach'
+alias b='bat'
+alias batcat='bat'
+alias c='code'
+alias C='code .'
+alias p='python'
+alias tmp='pushd $(mktemp -d)'
+
+# Git aliases
+alias gp='git pull'
+alias gpa='git pull --autostash'
+
+# VPN access
+alias lan_up='sudo wg-quick up ~/work/resources/vpn/helx.conf'
+alias lan_down='sudo wg-quick down ~/work/resources/vpn/helx.conf'
+alias vps_up='sudo wg-quick up ~/work/resources/vpn/vps.conf' 
+alias vps_down='sudo wg-quick down ~/work/resources/vpn/vps.conf'
+
+# Documentation
+# alias advwiki='sudo docker run -d -p 127.0.0.1:4567:80 --name wiki --rm -v ~/notes/advwiki:/root/wiki genebarker/gollum --http'
+
+# VMs and labs
+# alias goad='cd ~/work/labs/goad-lab && ./goad.sh'
+
+# Kubernetes config
+alias k9pub='export KUBECONFIG=~/work/resources/kube/public'
+alias k9pri='export KUBECONFIG=~/work/resources/kube/private'
+
 # System administration
 alias rm='trash-put'
 alias cp='cp -i'
@@ -17,9 +50,19 @@ alias urldecode="python3 -c \"import sys; from urllib.parse import unquote; prin
 alias urlencode-deep='f(){ echo -n "$1" | xxd -p | tr -d "\n" | sed "s#..#%&#g";  unset -f f; }; f'
 alias urlencode="python3 -c \"import sys; from urllib.parse import quote; print(quote(sys.argv[1], safe=''))\""
 alias nocolor='sed "s/\x1B\[[0-9;]\+[A-Za-z]//g"'
+alias nospace='sed -r "/^\s*$/d"'
+alias nocomment="sed '/^\s*#/d;/^\s*$/d'"
 
 # Hacking environment
 alias exegol='sudo -E ~/.local/bin/exegol'
+alias lanthernet='sudo ~/work/dev/lanthernet/lanthernet.sh'
+
+exefree() {
+    if [ -z $1 ] || [ -z $2 ]; then
+        echo "Usage: exefree <name> <path>"
+    fi
+    exegol start "$1" free --update-fs --shell zsh --workspace "$2"
+}
 
 # # Utils
 # ## Directories

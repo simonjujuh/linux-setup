@@ -103,6 +103,8 @@ setopt prompt_subst
 # -----------------------------------------------
 # User defined settings
 # -----------------------------------------------
+fpath=( /home/sjuhel/.local/share/pipx/venvs/argcomplete/lib/python3.12/site-packages/argcomplete/bash_completion.d "${fpath[@]}" )
+
 # Setup completion
 autoload -Uz compinit && compinit
 
@@ -121,3 +123,11 @@ alias exegol='sudo -E ~/.local/bin/exegol'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.aliases ] && source ~/.aliases
 export HISTSIZE=1000
+export VAGRANT_VMWARE_CLONE_DIRECTORY="~/vmware"
+# export VAGRANT_HOME="~/vmware"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(register-python-argcomplete cryptainer)"
